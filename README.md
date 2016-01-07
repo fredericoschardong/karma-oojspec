@@ -1,5 +1,5 @@
 # karma-oojspec
-A tentative to integrate karma with oojspec test suite
+A tentative to integrate karma with [oojspec](https://github.com/rosenfeld/oojspec/)
 
 ## Install the dependencies
 
