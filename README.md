@@ -9,11 +9,7 @@ A tentative to integrate karma with [oojspec](https://github.com/rosenfeld/oojsp
 
     karma start
 
-# Current status
-
-Currently, oojspec is being triggered on oojspec.initialize.js.coffee, there is not integration with karma at all.
-
 # TODO
 
 * ~~Make oojspec results be displayed in Karma's console~~
-* Turn this into a plugin (it is a good idea to wait until oojspec becomes a npm package itself)
+* Turn this into a plugin (we have to wait until oojspec becomes a npm package itself)
