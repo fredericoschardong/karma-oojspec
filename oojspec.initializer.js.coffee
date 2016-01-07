@@ -3,8 +3,8 @@ new class OojspecInitializer
     @total = @count = 0
 
     @eh.on 'oojspec:examples:add', (count) => @total += count
-    @eh.on 'suite:start', => @karma.info total: @total
-    @eh.on 'suite:end', => @karma.complete()
+    @eh.on 'suite:start',   => @karma.info total: @total
+    @eh.on 'suite:end',     @karma.complete
     @eh.on 'test:success',  @_karmaSuccess
     @eh.on 'test:deferred', @_karmaSuccess
     @eh.on 'test:failure',  @_karmaFail

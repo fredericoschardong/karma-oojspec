@@ -19,11 +19,12 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-coffee-preprocessor": "^0.3.0",
     "karma-firefox-launcher": "^0.1.7",
-    "karma-ie-launcher": "^0.2.0",
-    "oojspec": "git@github.com:rosenfeld/oojspec.git#master"
+    "karma-ie-launcher": "^0.2.0"
+  },
+  "scripts": {
+    "preinstall": "git clone git@github.com:rosenfeld/oojspec.git",
+    "preinstall": "git -C oojspec submodule update --init --recursive"
   },
   "license": "MIT",
-  "contributors": [
-
-  ]
+  "contributors": []
 }

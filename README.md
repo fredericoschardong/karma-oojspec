@@ -4,8 +4,6 @@ A tentative to integrate karma with [oojspec](https://github.com/rosenfeld/oojsp
 ## Install the dependencies
 
     npm install
-    cd oojspec/
-    git submodule update --init --recursive
 
 ## Running
 
