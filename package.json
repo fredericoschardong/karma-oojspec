@@ -1,15 +1,29 @@
 {
   "name": "karma-oojspec",
   "version": "0.0.1",
-  "dependencies": {
+  "description": "A Karma plugin - adapter for oojspec testing framework.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fredericoschardong/karma-oojspec.git"
+  },
+  "keywords": [
+    "karma-plugin",
+    "karma-adapter",
+    "oojspec"
+  ],
+  "author": "Frederico Schardong <frede.sch@gmail.com>",
+  "dependencies": {},
+  "devDependencies": {
     "coffee-script": "^1.10.0",
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coffee-preprocessor": "^0.3.0",
     "karma-firefox-launcher": "^0.1.7",
     "karma-ie-launcher": "^0.2.0",
-    "karma-sprockets": "^0.3.1",
-    "karma-webpack": "^1.7.0",
-    "webpack": "^1.12.9"
-  }
+    "oojspec": "git@github.com:rosenfeld/oojspec.git#master"
+  },
+  "license": "MIT",
+  "contributors": [
+
+  ]
 }
