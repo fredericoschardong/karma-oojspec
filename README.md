@@ -17,5 +17,5 @@ Currently, oojspec is being triggered on oojspec.initialize.js.coffee, there is 
 
 # TODO
 
-* Make oojspec results be displayed in Karma's console
+* ~~Make oojspec results be displayed in Karma's console~~
 * Turn this into a plugin

@@ -22,7 +22,7 @@ module.exports = (config) ->
       'oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
       'oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
       'oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'
-      'oojspec.initialize.js.coffee'
+      'oojspec.initializer.js.coffee'
       'specs/*_spec.js.coffee'
     ]
 
@@ -40,7 +40,7 @@ module.exports = (config) ->
       'oojspec/lib/assets/javascripts/oojspec/runner.js.coffee': ['coffee']
       'oojspec/lib/assets/javascripts/oojspec/progress.js.coffee': ['coffee']
       'oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee': ['coffee']
-      'oojspec.initialize.js.coffee': ['coffee']
+      'oojspec.initializer.js.coffee': ['coffee']
       'specs/*_spec.js.coffee': ['coffee']
     }
 

@@ -3,7 +3,7 @@ describe 'Some description', ->
     a = false
     setTimeout (-> a = true), 200
     @waitsFor -> a
-    @runs -> @assert true
+    @runs -> @assert false
 
   @example 'async examples work 2', ->
     a = false
