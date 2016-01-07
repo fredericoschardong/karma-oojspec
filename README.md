@@ -14,3 +14,8 @@ A tentative to integrate karma with oojspec test suite
 # Current status
 
 Currently, oojspec is being triggered on oojspec.initialize.js.coffee, there is not integration with karma at all.
+
+# TODO
+
+* Make oojspec results be displayed in Karma's console
+* Turn this into a plugin
