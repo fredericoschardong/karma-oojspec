@@ -1,9 +1,16 @@
-new class OojspecInitializer
+require ['./oojspec/vendor/assets/javascripts/buster/all.js.coffee'
+'./oojspec/vendor/assets/stylesheets/buster/buster-test.css'
+'./oojspec/lib/assets/javascripts/oojspec.js.coffee'
+'./oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
+'./oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
+'./oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
+'./oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'],
+-> new class OojspecInitializer
   constructor: (@eh = oojspec.events, @karma = window.__karma__) ->
     @total = @count = 0
     @_currentStack = []
     @eh.on 'context:start', (ev) => @_currentStack.push ev.name
-    @eh.on 'context:end', (ev) => @_currentStack.pop()
+    @eh.on 'context:end', @_contextEnd
 
     @eh.on 'oojspec:examples:add', (count) => @total += count
     @eh.on 'suite:start',   => @karma.info total: @total
@@ -14,8 +21,14 @@ new class OojspecInitializer
     @eh.on 'test:error',    @_karmaError
     @eh.on 'test:timeout',  @_karmaTimeout
 
+    console.log oojspec
+    window.oojspec = oojspec
     oojspec.exposeAll()
     @karma.start = -> oojspec.autorun()
+
+  _contextEnd: (ev) =>
+    @_currentStack.pop()
+    #@karma.reload(true)
 
   _karmaSuccess: (test) =>
     @_success test

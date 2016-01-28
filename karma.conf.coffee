@@ -15,15 +15,7 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
-      'oojspec/vendor/assets/javascripts/buster/*.js'
-      'oojspec/vendor/assets/stylesheets/buster/buster-test.css'
-      'oojspec/lib/assets/javascripts/oojspec.js.coffee'
-      'oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
-      'oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
-      'oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
-      'oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'
-      'oojspec.initializer.js.coffee'
-      'specs/*_spec.js.coffee'
+      'specs/example2_spec.js.coffee'
     ]
 
 
@@ -35,13 +27,7 @@ module.exports = (config) ->
     # preprocess matching files before serving them to the browser
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'oojspec/lib/assets/javascripts/oojspec.js.coffee': ['coffee']
-      'oojspec/lib/assets/javascripts/oojspec/utils.js.coffee': ['coffee']
-      'oojspec/lib/assets/javascripts/oojspec/runner.js.coffee': ['coffee']
-      'oojspec/lib/assets/javascripts/oojspec/progress.js.coffee': ['coffee']
-      'oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee': ['coffee']
-      'oojspec.initializer.js.coffee': ['coffee']
-      'specs/*_spec.js.coffee': ['coffee']
+      'specs/*_spec.js.coffee': ['webpack']
     }
 
 
@@ -86,9 +72,29 @@ module.exports = (config) ->
     # how many browser should be started simultaneous
     concurrency: Infinity
 
+    middleware: ['custom']
+
+    webpack:
+      resolve:
+        extensions: ["", ".js", ".coffee"]
+      module:
+        loaders: [{
+          test: /\.coffee$/
+          loader: "coffee-loader"
+        },{
+          test: /\.css$/
+          loader: "style-loader!css-loader"
+        }]
+
     plugins: [
-      'karma-coffee-preprocessor'
+      'karma-iframe-preprocessor'
       'karma-chrome-launcher'
       'karma-firefox-launcher'
-      #'karma-ie-launcher'
+      'karma-webpack'
+      'middleware:custom': ['factory', (config) ->
+        console.log config
+        (request, response, next) ->
+          console.log 'response'
+          next()
+      ]
     ]

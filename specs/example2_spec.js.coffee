@@ -1,3 +1,5 @@
+a = require('../oojspec.initializer.js.coffee')
+console.log a
 describe 'Some description', ->
   @example 'async examples work 3', ->
     a = false
