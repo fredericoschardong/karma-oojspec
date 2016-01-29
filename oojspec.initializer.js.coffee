@@ -1,12 +1,14 @@
-require 'expose?expect!./oojspec/vendor/assets/javascripts/buster/expect.js'
-require 'expose?samsam!./oojspec/vendor/assets/javascripts/buster/samsam.js'
-require 'expose?buster!./oojspec/vendor/assets/javascripts/buster/buster-core.js'
-require 'expose?bane!./oojspec/vendor/assets/javascripts/buster/bane.js'
-require 'expose?referee!imports?require=>false&define=>false&module=>false!./oojspec/vendor/assets/javascripts/buster/referee.js'
-require 'expose?formatio!imports?require=>false&define=>false&module=>false!./oojspec/vendor/assets/javascripts/buster/formatio.js'
+window._ = (require    '!imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/lodash.js')._
+require   'expose?expect!imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/expect.js'
+require   'expose?samsam!imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/samsam.js'
+require   'expose?buster!imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/buster-core.js'
+console.log Object.keys(buster)
+require                 'imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/buster-event-emitter.js'
+require     'expose?bane!imports?require=>false&define=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/bane.js'
+require  'expose?referee!imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/referee.js'
+require 'expose?formatio!imports?require=>false&define=>false&module=>false&this=>window!./oojspec/vendor/assets/javascripts/buster/formatio.js'
 
-console.log _.isEmpty window.buster
-console.log _.isEmpty window.formatio
+#console.log _.isEmpty window.formatio
 
 window.oojspec = (require './oojspec/lib/assets/javascripts/oojspec.js.coffee').oojspec
 
