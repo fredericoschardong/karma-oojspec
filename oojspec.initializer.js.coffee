@@ -1,11 +1,21 @@
-require ['./oojspec/vendor/assets/javascripts/buster/all.js.coffee'
-'./oojspec/vendor/assets/stylesheets/buster/buster-test.css'
-'./oojspec/lib/assets/javascripts/oojspec.js.coffee'
-'./oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
-'./oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
-'./oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
-'./oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'],
--> new class OojspecInitializer
+require 'expose?expect!./oojspec/vendor/assets/javascripts/buster/expect.js'
+require 'expose?samsam!./oojspec/vendor/assets/javascripts/buster/samsam.js'
+require 'expose?buster!./oojspec/vendor/assets/javascripts/buster/buster-core.js'
+require 'expose?bane!./oojspec/vendor/assets/javascripts/buster/bane.js'
+require 'expose?referee!imports?require=>false&define=>false&module=>false!./oojspec/vendor/assets/javascripts/buster/referee.js'
+require 'expose?formatio!imports?require=>false&define=>false&module=>false!./oojspec/vendor/assets/javascripts/buster/formatio.js'
+
+console.log _.isEmpty window.buster
+console.log _.isEmpty window.formatio
+
+window.oojspec = (require './oojspec/lib/assets/javascripts/oojspec.js.coffee').oojspec
+
+require './oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
+require './oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
+require './oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
+require './oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'
+
+new class OojspecInitializer
   constructor: (@eh = oojspec.events, @karma = window.__karma__) ->
     @total = @count = 0
     @_currentStack = []
@@ -21,7 +31,6 @@ require ['./oojspec/vendor/assets/javascripts/buster/all.js.coffee'
     @eh.on 'test:error',    @_karmaError
     @eh.on 'test:timeout',  @_karmaTimeout
 
-    console.log oojspec
     window.oojspec = oojspec
     oojspec.exposeAll()
     @karma.start = -> oojspec.autorun()

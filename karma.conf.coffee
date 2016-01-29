@@ -92,7 +92,7 @@ module.exports = (config) ->
       'karma-firefox-launcher'
       'karma-webpack'
       'middleware:custom': ['factory', (config) ->
-        console.log config
+        #console.log config
         (request, response, next) ->
           console.log 'response'
           next()

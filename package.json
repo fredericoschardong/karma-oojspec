@@ -13,18 +13,23 @@
   ],
   "author": "Frederico Schardong <frede.sch@gmail.com>",
   "dependencies": {
-    "karma": "git@github.com:fredericoschardong/karma.git#master"
+    "//": {"karma": "git@github.com:fredericoschardong/karma.git#master"}
   },
   "devDependencies": {
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.10.0",
     "css-loader": "^0.23.1",
+    "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coffee-preprocessor": "^0.3.0",
     "karma-firefox-launcher": "^0.1.7",
     "karma-ie-launcher": "^0.2.0",
     "karma-webpack": "^1.7.0",
     "style-loader": "^0.13.0",
+    "expect": "^1.13.4",
+    "expose-loader": "^0.7.1",
+    "fs": "^0.0.2",
+    "imports-loader": "^0.6.5",
     "webpack": "^1.12.12"
   },
   "scripts": {
