@@ -1,3 +1,5 @@
+require('../oojspec.initializer.js.coffee')
+
 describe 'Some description', ->
   @context 'inner context', ->
     @example 'this raises an error', -> nonExistent()

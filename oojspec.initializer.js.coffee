@@ -1,3 +1,21 @@
+require 'script!./oojspec/vendor/assets/javascripts/buster/lodash.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/samsam.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/buster-core.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/buster-event-emitter.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/bane.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/expect.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/formatio.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/html.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/referee.js'
+require 'script!./oojspec/vendor/assets/javascripts/buster/stack-filter.js'
+
+require 'script!./oojspec/lib/assets/javascripts/oojspec.js.coffee'
+
+require 'script!./oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
+require 'script!./oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
+require 'script!./oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
+require 'script!./oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'
+
 new class OojspecInitializer
   constructor: (@eh = oojspec.events, @karma = window.__karma__) ->
     @total = @count = 0
