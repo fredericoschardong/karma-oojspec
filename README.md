@@ -1,7 +1,7 @@
 # karma-oojspec
 A tentative to integrate karma with [oojspec](https://github.com/rosenfeld/oojspec/)
 
-Oojspec originally run test files in different iframes. In order to match that behavior this project uses a modified [karma](https://github.com/fredericoschardong/karma) which run test files in different iframes.
+For now we use a modified [karma](https://github.com/fredericoschardong/karma) while pull request [1825](https://github.com/karma-runner/karma/pull/1825) is not accepted.
 
 ## Install the dependencies
 

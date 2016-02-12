@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+</head>
+<body>
+  <script type="text/javascript">
+    loadScript = function(source, onLoadCaller){
+      var script = document.createElement('script');
+      script.onload = onLoadCaller;
+      script.src = source;
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    getWindowOpener = function(){
+      if (window.opener) {
+        return window.opener;
+      } else {
+        return window.parent;
+      }
+    }
+
+    var spec_file = location.search.split('file=')[1];
+
+    getWindowOpener().karma.setupContext(window);
+
+    //if spec_file is set then the current iframe is running some spec
+    if (spec_file) {
+      //expose oojspec
+      window.describe = getWindowOpener().describe;
+
+      loadScript(spec_file, function(){
+        if(--getWindowOpener().scriptsToLoad === 0){
+          window.__karma__.loaded();
+        }
+      })
+    }
+    else{
+      //copy karma so it can be properly set up in the spec iframes
+      window.karma = getWindowOpener().karma;
+
+      //find out when all iframes have been loaded
+      window.scriptsToLoad = 0;
+
+      %MAPPINGS%
+
+      oojspecLoaded = function(){
+        for (var file in window.__karma__.files) {
+          if(file.indexOf('oojspec.initializer.js.coffee') === -1){
+            window.scriptsToLoad++;
+            var iframe = document.createElement('IFRAME');
+            iframe.style.display = 'none';
+            iframe.src = 'context.html?file=' + file_path;
+            document.body.appendChild(iframe);
+          }
+        }
+      }
+
+      for (var file in window.__karma__.files) {
+        var file_path = file + '?' + window.__karma__.files[file];
+
+        if(file.indexOf('oojspec.initializer.js.coffee') !== -1){
+          loadScript(file_path, oojspecLoaded);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

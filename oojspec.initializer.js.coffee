@@ -8,13 +8,13 @@ require 'script!./oojspec/vendor/assets/javascripts/buster/formatio.js'
 require 'script!./oojspec/vendor/assets/javascripts/buster/html.js'
 require 'script!./oojspec/vendor/assets/javascripts/buster/referee.js'
 require 'script!./oojspec/vendor/assets/javascripts/buster/stack-filter.js'
-
 require 'script!./oojspec/lib/assets/javascripts/oojspec.js.coffee'
-
 require 'script!./oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
 require 'script!./oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
 require 'script!./oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
 require 'script!./oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'
+require './oojspec/lib/assets/stylesheets/oojspec/progress.css'
+require './oojspec/external/busterjs/reports/resources/buster-test.css'
 
 new class OojspecInitializer
   constructor: (@eh = oojspec.events, @karma = window.__karma__) ->
@@ -60,7 +60,7 @@ new class OojspecInitializer
   _error: (err, reason) ->
     log = [reason, err.error.message]
     if err.error.stack
-      log.push err.error.stack.replace(/[\n]?.*?oojspec\.initializer\.js.*?\n/g, "\n")
+      log.push err.error.stack
     @karma.result
       success: false
       description: err.name

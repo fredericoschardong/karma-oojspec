@@ -15,6 +15,7 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
+      'oojspec.initializer.js.coffee',
       'specs/*_spec.js.coffee'
     ]
 
@@ -27,6 +28,7 @@ module.exports = (config) ->
     # preprocess matching files before serving them to the browser
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'oojspec.initializer.js.coffee': ['webpack']
       'specs/*_spec.js.coffee': ['webpack']
     }
 
@@ -63,6 +65,10 @@ module.exports = (config) ->
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome', 'Firefox']#, 'IE']
 
+    customContextFile: 'static/oojspec_context.html'
+
+    client:
+      clearContext: false
 
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
