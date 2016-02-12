@@ -13,7 +13,6 @@
   ],
   "author": "Frederico Schardong <frede.sch@gmail.com>",
   "devDependencies": {
-    "script-loader": "^0.6.1",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.10.0",
     "css-loader": "^0.23.1",
@@ -22,6 +21,8 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-ie-launcher": "^0.2.0",
     "karma-webpack": "^1.7.0",
+    "script-loader": "^0.6.1",
+    "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
   },
   "scripts": {
