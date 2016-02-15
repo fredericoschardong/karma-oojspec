@@ -1,12 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+This file is almost the same as context.html - loads all source files,
+but its purpose is to be loaded in the main frame (not within an iframe),
+just for immediate execution, without reporting to Karma server.
+-->
 <html>
 <head>
-  <title></title>
+%X_UA_COMPATIBLE%
+  <title>Karma DEBUG RUNNER</title>
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
+  <!-- The scripts need to be at the end of body, so that some test running frameworks
+   (Angular Scenario, for example) need the body to be loaded so that it can insert its magic
+   into it. If it is before body, then it fails to find the body and crashes and burns in an epic
+   manner. -->
   <script type="text/javascript">
+    window.__karma__ = {
+      info: function(info) {
+        if (info.dump && window.console) window.console.log(info.dump);
+      },
+      complete: function() {
+        if (window.console) window.console.log('Skipped ' + this.skipped + ' tests');
+      },
+      store: function() {},
+      skipped: 0,
+      result: window.console ? function(result) {
+        if (result.skipped) {
+          this.skipped++;
+          return;
+        }
+        var msg = result.success ? 'SUCCESS ' : 'FAILED ';
+        var result_suite = result.suite.length ? result.suite.join(' ') : '';
+        window.console.log(msg + result_suite + ' ' + result.description);
+
+        for (var i = 0; i < result.log.length; i++) {
+          window.console.error(result.log[i]);
+        }
+      } : function() {},
+      loaded: function() {
+        this.start();
+      }
+    };
+
+    %CLIENT_CONFIG%
+
     loadScript = function(source, onLoadCaller){
       var script = document.createElement('script');
       script.onload = onLoadCaller;
@@ -35,8 +75,6 @@
       });
     }
     else{
-      getWindowOpener().karma.setupContext(window);
-
       %MAPPINGS%
 
       var iframe_runner_path;
@@ -60,7 +98,7 @@
             iframe.setAttribute('height', '500px');
             iframe.setAttribute('onload', 'oojspec.onIFrameLoaded(this)');
             iframe.style.display = 'none';
-            iframe.src = 'context.html?files=' + file_path + ',' + iframe_runner_path;
+            iframe.src = 'debug.html?files=' + file_path + ',' + iframe_runner_path;
             document.body.appendChild(iframe);
           }
         }

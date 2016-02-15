@@ -16,6 +16,7 @@ module.exports = (config) ->
     # list of files / patterns to load in the browser
     files: [
       'oojspec.initializer.js.coffee',
+      'oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee',
       'specs/*_spec.js.coffee'
     ]
 
@@ -29,6 +30,7 @@ module.exports = (config) ->
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'oojspec.initializer.js.coffee': ['webpack']
+      'oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee': ['webpack']
       'specs/*_spec.js.coffee': ['webpack']
     }
 
@@ -66,6 +68,7 @@ module.exports = (config) ->
     browsers: ['Chrome', 'Firefox']#, 'IE']
 
     customContextFile: 'static/oojspec_context.html'
+    customDebugFile: 'static/oojspec_debug.html'
 
     client:
       clearContext: false
@@ -83,6 +86,9 @@ module.exports = (config) ->
         extensions: ["", ".js", ".coffee"]
       module:
         loaders: [{
+          test: /iframe-runner\.js\.coffee/
+          loader: "imports?this=>window"
+        },{
           test: /\.coffee$/
           loader: "coffee-loader"
         },{
