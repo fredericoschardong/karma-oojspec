@@ -1,7 +1,5 @@
 # karma-oojspec
-A tentative to integrate karma with [oojspec](https://github.com/rosenfeld/oojspec/)
-
-For now we use a modified [karma](https://github.com/fredericoschardong/karma) while pull request [1825](https://github.com/karma-runner/karma/pull/1825) is not accepted.
+A tentative to integrate [karma](https://github.com/karma-runner/karma) with [oojspec](https://github.com/rosenfeld/oojspec/)
 
 ## Install the dependencies
 

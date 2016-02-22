@@ -26,7 +26,7 @@
     "webpack": "^1.12.13"
   },
   "scripts": {
-    "preinstall": "git -C oojspec submodule update --init --recursive && cd node_modules && git clone git@github.com:fredericoschardong/karma.git && cd karma && npm install && rm -Rf node_modules/karma && cd node_modules && ln -s ../ karma && cd ../ && node_modules/grunt-cli/bin/grunt browserify"
+    "preinstall": "git -C oojspec submodule update --init --recursive && cd node_modules && git clone git@github.com:karma-runner/karma.git && cd karma && npm install && rm -Rf node_modules/karma && cd node_modules && ln -s ../ karma && cd ../ && node_modules/grunt-cli/bin/grunt browserify"
   },
   "license": "MIT",
   "contributors": []
