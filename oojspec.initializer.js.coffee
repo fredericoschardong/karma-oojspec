@@ -1,20 +1,4 @@
-require 'script!./oojspec/vendor/assets/javascripts/buster/lodash.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/samsam.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/buster-core.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/buster-event-emitter.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/bane.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/expect.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/formatio.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/html.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/referee.js'
-require 'script!./oojspec/vendor/assets/javascripts/buster/stack-filter.js'
-require 'script!./oojspec/lib/assets/javascripts/oojspec.js.coffee'
-require 'script!./oojspec/lib/assets/javascripts/oojspec/utils.js.coffee'
-require 'script!./oojspec/lib/assets/javascripts/oojspec/runner.js.coffee'
-require 'script!./oojspec/lib/assets/javascripts/oojspec/progress.js.coffee'
-require 'script!./oojspec/lib/assets/javascripts/oojspec/iframe-runner.js.coffee'
-require './oojspec/lib/assets/stylesheets/oojspec/progress.css'
-require './oojspec/external/busterjs/reports/resources/buster-test.css'
+require 'oojspec'
 
 new class OojspecInitializer
   constructor: (@eh = oojspec.events, @karma = window.__karma__) ->

@@ -28,7 +28,7 @@
     if (files) {
       files = files.split(',');
 
-      //[1] is iframe-runner.js.coffee and [0] is the spec file
+      //[1] is oojspec-iframe-runner.js and [0] is the spec file
       loadScript(files[1], function(){
         oojspec.exposeAll();
         loadScript(files[0]);
@@ -45,7 +45,7 @@
       for (var file in window.__karma__.files) {
         var file_path = file + '?' + window.__karma__.files[file];
 
-        if(file.indexOf('iframe-runner.js.coffee') !== -1){
+        if(file.indexOf('oojspec-iframe-runner.js') !== -1){
           iframe_runner_path = file_path;
         }
       }
@@ -53,7 +53,7 @@
       oojspecLoaded = function(){
         for (var file in window.__karma__.files) {
           if(file.indexOf('oojspec.initializer.js.coffee') === -1 &&
-             file.indexOf('iframe-runner.js.coffee') === -1 ){
+             file.indexOf('oojspec-iframe-runner.js') === -1 ){
             var file_path = file + '?' + window.__karma__.files[file];
             var iframe = document.createElement('IFRAME');
             iframe.setAttribute('width', '100%');
