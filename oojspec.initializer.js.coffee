@@ -1,4 +1,5 @@
 require 'oojspec'
+require 'oojspec/dist/oojspec.css'
 
 new class OojspecInitializer
   constructor: (@eh = oojspec.events, @karma = window.__karma__) ->
