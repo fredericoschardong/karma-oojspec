@@ -13,10 +13,6 @@ just for immediate execution, without reporting to Karma server.
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
-  <!-- The scripts need to be at the end of body, so that some test running frameworks
-   (Angular Scenario, for example) need the body to be loaded so that it can insert its magic
-   into it. If it is before body, then it fails to find the body and crashes and burns in an epic
-   manner. -->
   <script type="text/javascript">
     window.__karma__ = {
       info: function(info) {
@@ -44,73 +40,9 @@ just for immediate execution, without reporting to Karma server.
         this.start();
       }
     };
-
+    %MAPPINGS%
     %CLIENT_CONFIG%
-
-    var loadScript = function(source, onLoadCaller){
-      var script = document.createElement('script');
-      script.onload = onLoadCaller;
-      script.src = source;
-      document.getElementsByTagName('head')[0].appendChild(script);
-    }
-
-    getWindowOpener = function(){
-      if (window.opener) {
-        return window.opener;
-      } else {
-        return window.parent;
-      }
-    }
-
-    var files = location.search.split('files=')[1];
-
-    //if files is set then the current iframe is running some spec
-    if (files) {
-      files = files.split(',');
-
-      //[1] is iframe-runner.js and [0] is the spec file
-      loadScript(files[1], function(){
-        oojspec.exposeAll();
-        loadScript(files[0]);
-      });
-    }
-    else{
-      %MAPPINGS%
-
-      var iframe_runner_path;
-
-      //get iframe-runner
-      for (var file in window.__karma__.files) {
-        var file_path = file + '?' + window.__karma__.files[file];
-
-        if (file.indexOf('iframe-runner.js') !== -1)
-          iframe_runner_path = file_path;
-      }
-
-      console.log(iframe_runner_path)
-
-      var oojspecLoaded = function(){
-        for (var file in window.__karma__.files) {
-          if (/(\/dist\/oojspec|oojspec.initializer)/.test(file)) continue;
-          var file_path = file + '?' + window.__karma__.files[file];
-          var iframe = document.createElement('IFRAME');
-          iframe.setAttribute('width', '100%');
-          iframe.setAttribute('height', '500px');
-          iframe.setAttribute('onload', 'oojspec.onIFrameLoaded(this)');
-          iframe.style.display = 'none';
-          iframe.src = 'debug.html?files=' + file_path + ',' + iframe_runner_path;
-          document.body.appendChild(iframe);
-        }
-      }
-
-      //load oojspec.initializer.js.coffee and create multiple iframes
-      for (var file in window.__karma__.files) {
-        var file_path = file + '?' + window.__karma__.files[file];
-
-        if (file.indexOf('oojspec.initializer.js.coffee') !== -1)
-          loadScript(file_path, oojspecLoaded);
-      }
-    }
   </script>
+  <script src="/base/oojspec.initializer.js.coffee?nocache=1"></script>
 </body>
 </html>
