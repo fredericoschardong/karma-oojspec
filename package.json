@@ -1,5 +1,5 @@
 {
-  "name": "karma-oojspec",
+  "name": "karma-oojspec-test",
   "version": "0.0.1",
   "description": "A Karma plugin - adapter for oojspec testing framework.",
   "repository": {
@@ -8,7 +8,7 @@
   },
   "keywords": [
     "karma-plugin",
-    "karma-adapter",
+    "karma-framework",
     "oojspec"
   ],
   "author": "Frederico Schardong <frede.sch@gmail.com>",
@@ -21,15 +21,15 @@
     "karma-coffee-preprocessor": "^0.3.0",
     "karma-firefox-launcher": "^0.1.7",
     "karma-ie-launcher": "^0.2.0",
+    "karma": "file:./karma",
     "karma-webpack": "^1.7.0",
-    "oojspec": "1.0.0",
+    "karma-oojspec": "file:./karma-oojspec",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
   },
   "scripts": {
-    "preinstall": "rm -rf node_modules/karma",
-    "prepare": "git clone git@github.com:karma-runner/karma.git && cd karma && npm install && npm run init && npm run build && cd ../node_modules && rm -rf karma && ln -s ../karma && cd node_modules/.bin && ln -s ../karma/bin/karma"
+    "prepare": "rm -rf node_modules/{karma,karma-oojspec} && git clone https://github.com/karma-runner/karma.git && cd karma && npm install && npm run init && npm run build && cd .. && git clone https://github.com/rosenfeld/karma-oojspec.git && cd karma-oojspec && npm install"
   },
   "license": "MIT",
   "contributors": [ "Rodrigo Rosenfeld Rosas <rr.rosas@gmail.com>" ]

@@ -10,13 +10,11 @@ module.exports = (config) ->
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: []
+    frameworks: ['oojspec']
 
 
     # list of files / patterns to load in the browser
     files: [
-      'oojspec.initializer.js.coffee',
-      'node_modules/oojspec/dist/oojspec/iframe-runner.js',
       'specs/*_spec.js.coffee'
     ]
 
@@ -29,7 +27,6 @@ module.exports = (config) ->
     # preprocess matching files before serving them to the browser
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'oojspec.initializer.js.coffee': ['webpack']
       'specs/*_spec.js.coffee': ['webpack']
     }
 
@@ -66,8 +63,8 @@ module.exports = (config) ->
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome', 'Firefox']#, 'IE']
 
-    customContextFile: 'static/oojspec_context.html'
-    customDebugFile: 'static/oojspec_debug.html'
+    customContextFile: 'node_modules/karma-oojspec/static/context.html'
+    customDebugFile: 'node_modules/karma-oojspec/static/debug.html'
 
     client:
       clearContext: false
@@ -92,5 +89,6 @@ module.exports = (config) ->
     plugins: [
       'karma-chrome-launcher'
       'karma-firefox-launcher'
+      'karma-oojspec'
       'karma-webpack'
     ]
