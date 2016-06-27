@@ -4,7 +4,6 @@ An integration of [karma](https://github.com/karma-runner/karma) with [oojspec](
 
 # INSTALL
 
-    npm run prepare
     npm install
 
 ## Running

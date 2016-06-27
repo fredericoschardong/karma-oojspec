@@ -21,15 +21,12 @@
     "karma-coffee-preprocessor": "^0.3.0",
     "karma-firefox-launcher": "^0.1.7",
     "karma-ie-launcher": "^0.2.0",
-    "karma": "file:./karma",
+    "karma": "^1.0.0",
     "karma-webpack": "^1.7.0",
-    "karma-oojspec": "file:./karma-oojspec",
+    "karma-oojspec": "^1.0.0",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
-  },
-  "scripts": {
-    "prepare": "rm -rf node_modules/{karma,karma-oojspec} && git clone https://github.com/karma-runner/karma.git && cd karma && npm install && npm run init && npm run build && cd .. && git clone https://github.com/rosenfeld/karma-oojspec.git && cd karma-oojspec && npm install"
   },
   "license": "MIT",
   "contributors": [ "Rodrigo Rosenfeld Rosas <rr.rosas@gmail.com>" ]
